@@ -16,6 +16,19 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def edit
+    @artist = Artist.find(params['id'])
+  end
+
+  def update
+    @artist = Artist.find(params['id'])
+    if @artist.update_attributes(artist_params)
+      redirect_to action: 'index', status: 303
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @artist = Artist.find(params[:id])
     @artist.destroy

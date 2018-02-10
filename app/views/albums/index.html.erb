@@ -4,6 +4,13 @@
   </div>
 </div>
 <div class="columns">
+  <div class="column">
+    <% if @artist.present? %>
+      <%= link_to "Add Album", new_artist_album_path(@artist.id) %>
+    <% end %>
+  </div>
+</div>
+<div class="columns">
   <div class="column is-11">
     <table class="table is-striped is-fullwidth">
       <thead>
@@ -11,14 +18,19 @@
           <th>Title</th>
           <th>Artist</th>
           <th>Release</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <% @albums.each do |album| %>
           <tr>
             <td><%= album.title %></td>
-            <td><%= album.artist.name %></td>
+            <td><%= album.artist_name %></td>
             <td><%= album.year %></td>
+            <td>
+              <%= link_to("Edit", edit_album_path(album)) %> | 
+              <%= link_to 'Delete', delete_path(album, @artist), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
           </tr>
         <% end %>
       </tbody>

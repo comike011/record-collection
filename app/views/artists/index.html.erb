@@ -29,8 +29,8 @@
             </td>
             <td>
               <%= link_to 'View by Albums', artist_albums_path(artist.id) %><br />
-              Add Album<br />
-              Edit Artist<br />
+              <%= link_to 'Add Album', new_artist_album_path(artist.id) %><br />
+              <%= link_to 'Edit Artist', edit_artist_path(artist.id) %><br />
               <%= link_to 'Delete', artist_path(artist), method: :delete, data: { confirm: 'Are you sure?' } %>
             </td>
           </tr>

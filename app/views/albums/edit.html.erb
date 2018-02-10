@@ -1,0 +1,10 @@
+<div class="columns">
+  <div class="column is-11">
+    <h1 class="title">Edit Album for <%= @album.artist_name %></h1>
+  </div>
+</div>
+<div class="columns">
+  <div class="column is-11">
+    <%= render "albums/partials/form", album: @album, action: "update" %>
+  </div>
+</div>

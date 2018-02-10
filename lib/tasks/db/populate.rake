@@ -2,6 +2,7 @@ namespace :db do
   desc 'Populate the database with some sample data'
   task populate: :environment do
     # rubocop:disable LineLength
+    Artist.create(name: 'The Strokes')
     artist = Artist.create(name: 'Tribe Called Quest')
     album = Album.create(title: 'We Got It From Here...Thank You 4 Your Service', year: 2017, artist_id: artist.id)
     10.times do |i|

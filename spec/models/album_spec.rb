@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Album, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:artist) }
+  it { should have_many(:tracks) }
 end

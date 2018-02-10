@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   helper AlbumHelper
-  before_action :load_album, only: %i[edit destroy update]
+  before_action :load_album, only: %i[edit destroy update show]
   def index
     if params['artist_id'].present?
       @albums = Album.where(artist_id: params['artist_id'])
@@ -9,6 +9,8 @@ class AlbumsController < ApplicationController
       @albums = Album.all
     end
   end
+
+  def show; end
 
   def edit; end
 

@@ -1,0 +1,36 @@
+<div class="columns">
+  <div class="column is-11">
+    <h1 class="title"><%= @album.title %></h1>
+    <h2 class="subtitle"><%= link_to @album.artist_name, artist_albums_path(@album.artist.id) %></h2>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <p>Release Year: <%= @album.year %></p>
+  </div>
+</div>
+<div class="columns">
+  <div class="column is-11">
+    <h2 class="subtitle">Tracks</h2>
+    <% if @album.tracks.empty? %>
+      <p>Tracks not found for this album</p>
+    <% else %>
+      <table class="table is-striped is-fullwidth">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @album.tracks.each do |track| %>
+            <tr>
+              <td><%= track.number %></td>
+              <td><%= track.title %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
+  </div>
+</div>

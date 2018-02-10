@@ -1,0 +1,15 @@
+<div class="columns">
+  <div class="column is-11">
+    <h1 class="title"><%= @album.title %></h1>
+    <h2 class="subtitle"><%= @album.artist_name %></h2>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <p>Release Year: <%= @album.year %></p>
+  </div>
+  <div class="column">
+    <p>First Press: <%= @album.first_press %></p>
+  </div>
+</div>
+

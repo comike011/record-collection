@@ -1,4 +1,5 @@
 class Album < ApplicationRecord
+  default_scope { order(:title) }
   belongs_to :artist
-  has_many :tracks
+  has_many :tracks, dependent: :delete_all
 end

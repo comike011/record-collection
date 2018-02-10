@@ -1,0 +1,28 @@
+<div class="columns">
+  <div class="column is-11">
+    <h1 class="title">Albums<%= title(@artist) %></h1>
+  </div>
+</div>
+<div class="columns">
+  <div class="column is-11">
+    <table class="table is-striped is-fullwidth">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Artist</th>
+          <th>Release</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @albums.each do |album| %>
+          <tr>
+            <td><%= album.title %></td>
+            <td><%= album.artist.name %></td>
+            <td><%= album.year %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

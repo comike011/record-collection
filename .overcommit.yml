@@ -1,0 +1,15 @@
+# Overcommit Configuration for Git hook management
+# https://github.com/brigade/overcommit/
+#
+# For a complete list of hooks, see:
+# https://github.com/brigade/overcommit/tree/master/lib/overcommit/hook
+#
+# For a complete list of options that you can use to customize hooks, see:
+# https://github.com/brigade/overcommit#configuration
+
+verify_signatures: false
+
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail

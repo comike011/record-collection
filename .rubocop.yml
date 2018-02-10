@@ -1,0 +1,18 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - db/**
+    - config/initializers/**
+    - config/environments/**
+    - config/**
+    - bin/**
+    - Gemfile
+    - Rakefile
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
+Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+

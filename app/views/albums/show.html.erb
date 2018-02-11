@@ -1,4 +1,9 @@
 <div class="columns">
+  <% if @album.image_url.present? %>
+    <div class="column is-1">
+      <%= image_tag(@album.image_url) %>
+    </div>
+  <% end %>
   <div class="column is-10">
     <h1 class="title"><%= @album.title %></h1>
     <h2 class="subtitle"><%= link_to @album.artist_name, artist_albums_path(@album.artist.id) %></h2>

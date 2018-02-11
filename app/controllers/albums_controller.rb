@@ -16,7 +16,7 @@ class AlbumsController < ApplicationController
 
   def update
     if @album.update_attributes(album_params)
-      redirect_to action: 'index', status: 303
+      redirect_to action: 'index', artist_id: @album.artist_id
     else
       render 'edit'
     end
@@ -47,6 +47,6 @@ class AlbumsController < ApplicationController
   end
 
   def album_params
-    params.require(:album).permit(:title, :year, :artist_id)
+    params.require(:album).permit(:title, :year, :artist_id, :condition)
   end
 end

@@ -22,29 +22,25 @@
         </div>
       </div>
     </div>
-<!--
+
     <div class="column is-2">
       <div class="field">
-        <%= f.label :year, value: "Year", class: "label inline" %>
+        <%= f.label :condition, value: "Condition", class: "label inline" %>
         <div class="control">
           <div class="select">
-            <%= f.select :year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1), class: "input inline" %>
+            <%= f.select :condition,["Mint","Near Mint","Very Good Plus", "Very Good", "Good", "Good Plus", "Fair", "Poor", "Still Sealed"] , class: "input inline" %>
           </div>
         </div>
       </div>
     </div>
--->
-  </div>
 
+  </div>
 
   <div class="columns">
     <div class="column is-half">
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-primary">Save</button>
-        </div>
-        <div class="control">
-          <button class="button is-danger">Cancel</button>
+          <%= f.submit "Save", class: "button is-primary" %>
         </div>
       </div>
     </div>

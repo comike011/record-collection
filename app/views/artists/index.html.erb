@@ -4,8 +4,22 @@
   </div>
 </div>
 <div class="columns">
-  <div class="column">
-    <%= link_to "Add Artist", new_artist_path %>
+  <div class="column is-pulled-left is-1">
+    <%= link_to "Add Artist", new_artist_path, class: "button is-secondary" %>
+  </div>
+  <div class="column is-pulled-left is-4">
+    <%= form_tag(artist_csv_path, method: "post") do %>
+      <div class="select">
+        <select name="sort">
+          <option>Sort By..</option>
+          <option value="artist">Artist Name</option>
+          <option value="records">Number of Records</option>
+          <option value="min">Earliest Record Year</option>
+          <option value="max">Latest Record Year</option>
+        </select>
+      </div>
+      <%= submit_tag "Export to CSV", class: "button is-secondary" %>
+    <% end %>
   </div>
 </div>
 <div class="columns">

@@ -35,7 +35,25 @@ class ArtistsController < ApplicationController
     redirect_to action: 'index', status: 303
   end
 
+  def csv
+    @artists = sorted_artists(params['sort'])
+    send_data Artist.to_csv(@artists)
+  end
+
   private
+
+  def sorted_artists(order)
+    case order
+    when 'records'
+      Artist.all.sort_by { |a| a.albums.size }
+    when 'min'
+      Artist.all.sort_by { |a| a.record_year_min.to_i }
+    when 'max'
+      Artist.all.sort_by { |a| a.record_year_max.to_i }
+    else
+      Artist.all.order(:name)
+    end
+  end
 
   def artist_params
     params.require(:artist).permit(:name)

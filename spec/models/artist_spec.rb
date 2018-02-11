@@ -5,7 +5,7 @@ RSpec.describe Artist, type: :model do
   it { should have_many(:tracks) }
   it { should have_many(:title_word_frequencies) }
   it { should validate_uniqueness_of(:name) }
-  describe '#record_year_range_min' do
+  describe '#record_year_min' do
     it 'returns the earliest year of artist records' do
       artist = Artist.create(name: 'Pavement')
       5.times do |i|
@@ -14,11 +14,11 @@ RSpec.describe Artist, type: :model do
           year: (10..20).to_a.sample.years.ago.year,
           title: "Album #{i}"
         )
-        expect(artist.record_year_range_min).to eq(Album.minimum(:year))
       end
+      expect(artist.record_year_min).to eq(Album.minimum(:year))
     end
   end
-  describe '#record_year_range_max' do
+  describe '#record_year_max' do
     it 'returns the most recent year of artist records' do
       artist = Artist.create(name: 'Pavement')
       5.times do |i|
@@ -27,8 +27,8 @@ RSpec.describe Artist, type: :model do
           year: (10..20).to_a.sample.years.ago.year,
           title: "Album #{i}"
         )
-        expect(artist.record_year_range_max).to eq(Album.maximum(:year))
       end
+      expect(artist.record_year_max).to eq(Album.maximum(:year))
     end
   end
   describe '#format_name' do

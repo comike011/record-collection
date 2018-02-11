@@ -1,6 +1,7 @@
 class SpotifyWorker
   include Sidekiq::Worker
   require 'rspotify'
+  sidekiq_options retry: false
 
   def perform(album_id)
     album = Album.find(album_id)

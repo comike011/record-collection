@@ -1,28 +1,19 @@
 namespace :db do
+  require 'rspotify'
   desc 'Populate the database with some sample data'
   task populate: :environment do
     # rubocop:disable LineLength
     Artist.create(name: 'The Strokes')
-    artist = Artist.create(name: 'Tribe Called Quest')
-    album = Album.create(title: 'We Got It From Here...Thank You 4 Your Service', year: 2017, artist_id: artist.id)
-    10.times do |i|
-      Track.create(title: "Track #{i}", album_id: album.id)
-    end
-    album = Album.create(title: 'Beats, Rhymes & Life', year: 1996, artist_id: artist.id)
-    10.times do |i|
-      Track.create(title: "Track #{i}", album_id: album.id)
-    end
-    album = Album.create(title: 'Midnight Marauders', year: 1993, artist_id: artist.id)
-    10.times do |i|
-      Track.create(title: "Track #{i}", album_id: album.id)
-    end
-    album = Album.create(title: 'The Low End Theory', year: 1991, artist_id: artist.id)
-    10.times do |i|
-      Track.create(title: "Track #{i}", album_id: album.id)
-    end
-    album = Album.create(title: 'People\'s Instinctive Travels and the Paths of Rhythm', year: 1991, artist_id: artist.id)
-    10.times do |i|
-      Track.create(title: "Track #{i}", album_id: album.id)
+    Artist.create(name: 'Tribe Called Quest')
+    Artist.create(name: 'The Beatles')
+    Artist.create(name: 'LCD Soundsystem')
+    Artist.create(name: 'Phish')
+    artists = Artist.all
+    artists.each do |artist|
+      spotify_artist = RSpotify::Artist.search(artist.name).first
+      spotify_artist.albums.each do |album|
+        Album.create(artist_id: artist.id, title: album.name, year: album.release_date[0...4])
+      end
     end
     # rubocop:enable LineLength
   end

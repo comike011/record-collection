@@ -1,12 +1,15 @@
 <div class="columns">
-  <div class="column is-11">
+  <div class="column is-10">
     <h1 class="title"><%= @album.title %></h1>
     <h2 class="subtitle"><%= link_to @album.artist_name, artist_albums_path(@album.artist.id) %></h2>
   </div>
 </div>
 <div class="columns">
-  <div class="column">
+  <div class="column is-2">
     <p>Release Year: <%= @album.year %></p>
+  </div>
+  <div class="column is-2">
+    <p>Condition: <%= @album.condition %></p>
   </div>
 </div>
 <div class="columns">
@@ -31,6 +34,6 @@
           <% end %>
         </tbody>
       </table>
-      <% end %>
+    <% end %>
   </div>
 </div>

@@ -38,7 +38,7 @@
             <td><%= artist.name %></td>
             <td>
               <% artist.albums.each do |album| %>
-                <p><%= album.title %></p>
+                <p><%= link_to album.title, album_path(album.id) %></p>
               <% end %>
             </td>
             <td>

@@ -58,6 +58,7 @@ The Spotify API key was intentionally included in this repository. Generally, th
 + Run the migrations: `rake db:migrate`
 + Run populate: `rake db:populate`
  + This will take a moment as it creates some smaple data for artists who had a lot of albums. Don't use this if you only want your own data.
++ In a seperate console, start redis with `redis-server`
 + Launch the application: `foreman start -p 3000`
 
 ## Access

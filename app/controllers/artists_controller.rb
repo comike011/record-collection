@@ -40,6 +40,11 @@ class ArtistsController < ApplicationController
     send_data Artist.to_csv(@artists)
   end
 
+  def search
+    @artists = Artist.where('LOWER(name) ILIKE ?', "%#{params['search']}%")
+    render 'index'
+  end
+
   private
 
   def sorted_artists(order)

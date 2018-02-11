@@ -4,6 +4,7 @@ class Album < ApplicationRecord
   has_many :tracks, dependent: :delete_all
 
   after_save :save_tracks
+  after_save :save_word_frequency
 
   delegate :name, to: :artist, prefix: true
 
@@ -11,5 +12,9 @@ class Album < ApplicationRecord
 
   def save_tracks
     SpotifyWorker.perform_async(id)
+  end
+
+  def save_word_frequency
+    TitleWordFrequencyWorker.perform_async(artist.id, title)
   end
 end

@@ -2,6 +2,7 @@ class Artist < ApplicationRecord
   default_scope { order(:name) }
   has_many :albums, dependent: :delete_all
   has_many :tracks, through: :albums
+  has_many :title_word_frequencies, dependent: :delete_all
   before_save :format_name
 
   private

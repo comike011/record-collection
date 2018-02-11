@@ -7,13 +7,21 @@ class Artist < ApplicationRecord
 
   validates_uniqueness_of :name
 
+  def record_year_range_min
+    albums.last.year
+  end
+
+  def record_year_range_max
+    albums.first.year
+  end
+
   private
 
   def format_name
-    self.name = if name.downcase.start_with?('the')
+    self.name = if name.to_s.downcase.start_with?('the')
                   (name.downcase.sub('the ', '') << ', The').titleize
                 else
-                  name.titleize
+                  name.to_s.titleize
                 end
   end
 end

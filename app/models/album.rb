@@ -17,6 +17,7 @@ class Album < ApplicationRecord
   end
 
   def save_word_frequency
+    return unless artist.present?
     TitleWordFrequencyWorker.perform_async(artist.id, title)
   end
 end

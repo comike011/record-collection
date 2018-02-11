@@ -48,3 +48,19 @@
     gem install bundler
     rbenv rehash
     ```
+## Running the app
+
++ Run bundler: `bundle install`
++ Create the database: `rake db:create:all`
++ Run the migrations: `rake db:migrate`
++ Run populate: `rake db:populate`
+ + This will take a moment as it creates some smaple data for artists who had a lot of albums. Don't use this if you only want your own data.
++ Launch the application: `foreman start -p 3000`
+
+## Access
++ Visit http://localhost:3000/
+
+## Running the test suite
++ `rake db:test:prepare`
++ `rspec spec`
+

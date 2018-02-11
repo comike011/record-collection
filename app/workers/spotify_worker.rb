@@ -2,6 +2,8 @@ class SpotifyWorker
   include Sidekiq::Worker
   require 'rspotify'
 
+  sidekiq_options retry: 5
+
   def perform(album_id)
     album = Album.find(album_id)
     spotify_artist = spotify_artist(album.artist_name)
@@ -13,7 +15,7 @@ class SpotifyWorker
   end
 
   def spotify_artwork(album, sa)
-    return unless album.present?
+    return unless sa.present?
     album.image_url = sa.instance_variable_get('@images').first['url']
     album.save
   end
@@ -25,7 +27,7 @@ class SpotifyWorker
   def spotify_album(spotify_artist, album_title)
     return '' unless spotify_artist.present?
     spotify_artist.albums.find do |a|
-      a.instance_variable_get('@name').include?(album_title)
+      a.instance_variable_get('@name').downcase.include?(album_title.downcase)
     end
   end
 

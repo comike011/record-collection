@@ -6,6 +6,8 @@ class Album < ApplicationRecord
   after_create :save_tracks
   after_create :save_word_frequency
 
+  before_destroy :reduce_word_frequency
+
   validates_uniqueness_of :title, scope: :artist_id
 
   delegate :name, to: :artist, prefix: true
@@ -19,5 +21,10 @@ class Album < ApplicationRecord
   def save_word_frequency
     return unless artist.present?
     TitleWordFrequencyWorker.perform_async(artist.id, title)
+  end
+
+  def reduce_word_frequency
+    return unless artist.present?
+    TitleWordFrequencyRemovalWorker.perform_async(artist.id, title)
   end
 end

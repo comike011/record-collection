@@ -1,3 +1,6 @@
+## Notes
+The Spotify API key was intentionally included in this repository. Generally, this is bad practice, but felt acceptable for the purposes of app and its relative lack of sensitivity.
+
 ## Requirements
 1. Install [Homebrew](brew.sh)
   ```

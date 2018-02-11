@@ -3,8 +3,8 @@ class Album < ApplicationRecord
   belongs_to :artist
   has_many :tracks, dependent: :delete_all
 
-  after_save :save_tracks
-  after_save :save_word_frequency
+  after_create :save_tracks
+  after_create :save_word_frequency
 
   validates_uniqueness_of :title, scope: :artist_id
 

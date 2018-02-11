@@ -5,6 +5,8 @@ class Artist < ApplicationRecord
   has_many :title_word_frequencies, dependent: :delete_all
   before_save :format_name
 
+  validates_uniqueness_of :name
+
   private
 
   def format_name

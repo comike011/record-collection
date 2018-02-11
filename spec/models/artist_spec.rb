@@ -4,6 +4,7 @@ RSpec.describe Artist, type: :model do
   it { should have_many(:albums) }
   it { should have_many(:tracks) }
   it { should have_many(:title_word_frequencies) }
+  it { should validate_uniqueness_of(:name) }
 
   describe '#format_name' do
     it 'name starts with \'the\' it is moved to the end' do

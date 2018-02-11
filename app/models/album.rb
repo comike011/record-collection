@@ -6,6 +6,8 @@ class Album < ApplicationRecord
   after_save :save_tracks
   after_save :save_word_frequency
 
+  validates_uniqueness_of :title, scope: :artist_id
+
   delegate :name, to: :artist, prefix: true
 
   private
